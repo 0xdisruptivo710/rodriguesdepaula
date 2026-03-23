@@ -1,0 +1,2249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rodrigues de Paula — Advocacia Especializada em Atipicidade</title>
+  <meta name="description" content="Escritório especializado em direitos de pessoas com autismo, comunidade LGBT e doenças raras. Descubra direitos que ninguém te contou. Consulta gratuita.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       RESET & CUSTOM PROPERTIES
+       ============================================ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --cream: #F5F0E8;
+      --cream-light: #FFFCF7;
+      --cream-dark: #EBE4D8;
+      --warm-black: #1A1714;
+      --warm-dark: #2A2118;
+      --terracotta: #C4784A;
+      --terracotta-light: #D4956A;
+      --terracotta-dark: #A8623A;
+      --terracotta-glow: rgba(196, 120, 74, 0.15);
+      --border: #DDD5C8;
+      --text-muted: #6B6158;
+      --text-light: #F5F0E8;
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Crimson Pro', 'Georgia', serif;
+
+      --section-pad: clamp(5rem, 10vw, 9rem);
+      --content-width: 1140px;
+      --content-narrow: 800px;
+
+      --shadow-sm: 0 2px 8px rgba(26, 23, 20, 0.05);
+      --shadow-md: 0 4px 24px rgba(26, 23, 20, 0.07);
+      --shadow-lg: 0 12px 48px rgba(26, 23, 20, 0.10);
+      --shadow-hover: 0 16px 56px rgba(196, 120, 74, 0.14);
+
+      --radius: 6px;
+      --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ============================================
+       BASE STYLES
+       ============================================ */
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: var(--warm-black);
+      background-color: var(--cream);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Paper texture overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-display);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    a {
+      color: var(--terracotta);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover {
+      color: var(--terracotta-dark);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ::selection {
+      background-color: var(--terracotta);
+      color: var(--cream);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--terracotta);
+      outline-offset: 3px;
+    }
+
+    /* ============================================
+       LAYOUT UTILITIES
+       ============================================ */
+    .container {
+      width: 100%;
+      max-width: var(--content-width);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+    }
+
+    .container--narrow {
+      max-width: var(--content-narrow);
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--terracotta);
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      margin-bottom: 1.5rem;
+      max-width: 20ch;
+    }
+
+    .section-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 55ch;
+      line-height: 1.7;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .ornament-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--terracotta);
+      transform: rotate(45deg);
+      margin: 0 1rem;
+      flex-shrink: 0;
+    }
+
+    /* ============================================
+       SCROLL REVEAL ANIMATIONS
+       ============================================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .hero-word {
+        opacity: 1 !important;
+        transform: none !important;
+        animation: none !important;
+      }
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: background var(--transition), padding var(--transition), box-shadow var(--transition);
+    }
+
+    .nav.scrolled {
+      background: rgba(245, 240, 232, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.75rem 0;
+      box-shadow: 0 1px 0 var(--border);
+    }
+
+    .nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--warm-black);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo:hover {
+      color: var(--warm-black);
+    }
+
+    .nav-monogram {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1.5px solid var(--warm-black);
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: none;
+      list-style: none;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+      transition: color var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--warm-black);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 2rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all var(--transition);
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--cream-light);
+    }
+
+    .btn-primary:hover {
+      background: var(--terracotta-dark);
+      color: var(--cream-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--terracotta);
+      border: 1.5px solid var(--terracotta);
+    }
+
+    .btn-secondary:hover {
+      background: var(--terracotta);
+      color: var(--cream-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--terracotta);
+      padding: 0.5rem 0;
+      font-weight: 500;
+    }
+
+    .btn-ghost::after {
+      content: '→';
+      transition: transform var(--transition);
+    }
+
+    .btn-ghost:hover::after {
+      transform: translateX(4px);
+    }
+
+    .btn-ghost:hover {
+      color: var(--terracotta-dark);
+    }
+
+    .nav-cta {
+      font-size: 0.85rem;
+      padding: 0.65rem 1.5rem;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(6rem + var(--section-pad)) 0 var(--section-pad);
+      position: relative;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .hero-ornament {
+      width: 60px;
+      height: 1px;
+      background: var(--terracotta);
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: ornamentReveal 0.8s 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes ornamentReveal {
+      to {
+        opacity: 1;
+        transform: scaleX(1);
+      }
+    }
+
+    .hero-headline {
+      font-size: clamp(2.75rem, 7vw, 5rem);
+      line-height: 1.08;
+      margin-bottom: 1.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(35px);
+      animation: wordReveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes wordReveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-word-highlight {
+      color: var(--terracotta);
+    }
+
+    .hero-sub {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--text-muted);
+      max-width: 42ch;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-cta {
+      opacity: 0;
+      animation: fadeUp 0.8s 1.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 2.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .hero-scroll span {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--terracotta);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { top: -100%; }
+      50% { top: 100%; }
+      100% { top: 100%; }
+    }
+
+    /* ============================================
+       CONSCIÊNCIA — RIGHTS SECTION
+       ============================================ */
+    .consciencia {
+      padding: var(--section-pad) 0;
+    }
+
+    .consciencia-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .consciencia-header .section-label {
+      justify-content: center;
+    }
+
+    .consciencia-header .section-label::before {
+      display: none;
+    }
+
+    .consciencia-header .section-title {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 25ch;
+    }
+
+    .consciencia-header .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .rights-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .rights-card {
+      background: var(--cream-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .rights-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--terracotta);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+
+    .rights-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .rights-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .rights-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      color: var(--terracotta);
+    }
+
+    .rights-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .rights-card-label {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 1.25rem;
+    }
+
+    .rights-list {
+      list-style: none;
+      margin-bottom: 1.75rem;
+    }
+
+    .rights-list li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      border-bottom: 1px solid rgba(221, 213, 200, 0.5);
+    }
+
+    .rights-list li:last-child {
+      border-bottom: none;
+    }
+
+    .rights-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 1rem;
+      width: 6px;
+      height: 6px;
+      border: 1.5px solid var(--terracotta);
+      border-radius: 50%;
+    }
+
+    .rights-link {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* ============================================
+       PROBLEMA — EMPATHY SECTION
+       ============================================ */
+    .problema {
+      padding: var(--section-pad) 0;
+      background: var(--warm-dark);
+      color: var(--text-light);
+      position: relative;
+    }
+
+    .problema::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+      pointer-events: none;
+    }
+
+    .problema .section-label {
+      color: var(--terracotta-light);
+    }
+
+    .problema .section-label::before {
+      background: var(--terracotta-light);
+    }
+
+    .problema .section-title {
+      color: var(--text-light);
+      max-width: 28ch;
+    }
+
+    .problema-subtitle {
+      color: rgba(245, 240, 232, 0.6);
+      font-size: 1.1rem;
+      max-width: 50ch;
+      margin-bottom: 3.5rem;
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .quote-block {
+      position: relative;
+      padding: 2rem;
+      border-left: 2px solid var(--terracotta);
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .quote-mark {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      color: var(--terracotta);
+      line-height: 1;
+      position: absolute;
+      top: 0.5rem;
+      left: 2rem;
+      opacity: 0.3;
+    }
+
+    .quote-text {
+      font-family: var(--font-body);
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.9);
+      padding-top: 1rem;
+    }
+
+    .problema-cta {
+      margin-top: 3.5rem;
+    }
+
+    .btn-light {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(245, 240, 232, 0.4);
+    }
+
+    .btn-light:hover {
+      background: var(--cream);
+      color: var(--warm-dark);
+      transform: translateY(-2px);
+    }
+
+    /* ============================================
+       SOLUÇÃO — THE FIRM
+       ============================================ */
+    .solucao {
+      padding: var(--section-pad) 0;
+    }
+
+    .solucao-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .solucao-monogram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .monogram {
+      width: 180px;
+      height: 180px;
+      border: 2px solid var(--warm-black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .monogram-text {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+
+    .monogram-sub {
+      position: absolute;
+      bottom: -1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-body);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      white-space: nowrap;
+      background: var(--cream);
+      padding: 0 1rem;
+    }
+
+    .solucao-text .section-title {
+      max-width: 100%;
+    }
+
+    .solucao-desc {
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 50ch;
+    }
+
+    .diferenciais {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .diferencial {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .diferencial-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--terracotta);
+    }
+
+    .diferencial-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .diferencial h4 {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .diferencial p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ============================================
+       COMO FUNCIONA — PROCESS
+       ============================================ */
+    .processo {
+      padding: var(--section-pad) 0;
+      background: var(--cream-dark);
+    }
+
+    .processo-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .processo-header .section-label {
+      justify-content: center;
+    }
+
+    .processo-header .section-label::before {
+      display: none;
+    }
+
+    .processo-header .section-title {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 48px;
+      bottom: 48px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding: 1.5rem 0;
+    }
+
+    .timeline-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--terracotta);
+      color: var(--cream-light);
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-content h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-content p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* ============================================
+       DEPOIMENTOS — TESTIMONIALS
+       ============================================ */
+    .depoimentos {
+      padding: var(--section-pad) 0;
+    }
+
+    .depoimentos-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .depoimentos-header .section-label {
+      justify-content: center;
+    }
+
+    .depoimentos-header .section-label::before {
+      display: none;
+    }
+
+    .depoimentos-header .section-title {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .testimonial-card {
+      background: var(--cream-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+      color: var(--terracotta);
+    }
+
+    .testimonial-stars svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      color: var(--warm-black);
+    }
+
+    .testimonial-author {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .testimonials-note {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ============================================
+       FAQ SECTION
+       ============================================ */
+    .faq {
+      padding: var(--section-pad) 0;
+      background: var(--cream-dark);
+    }
+
+    .faq-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .faq-header .section-label {
+      justify-content: center;
+    }
+
+    .faq-header .section-label::before {
+      display: none;
+    }
+
+    .faq-header .section-title {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .faq-list {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--warm-black);
+      text-align: left;
+      padding: 1.35rem 3rem 1.35rem 0;
+      cursor: pointer;
+      position: relative;
+      transition: color var(--transition);
+      line-height: 1.5;
+    }
+
+    .faq-question:hover {
+      color: var(--terracotta);
+    }
+
+    .faq-question::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-body);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--terracotta);
+      transition: transform var(--transition);
+    }
+
+    .faq-item.active .faq-question::after {
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+                  padding 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .faq-answer-inner {
+      padding-bottom: 1.5rem;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       CTA FINAL — AGENDAMENTO
+       ============================================ */
+    .agendamento {
+      padding: var(--section-pad) 0;
+      position: relative;
+    }
+
+    .agendamento-content {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto;
+    }
+
+    .agendamento .section-title {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 22ch;
+    }
+
+    .agendamento-subtitle {
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .form-wrapper {
+      background: var(--cream-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+      text-align: left;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--warm-black);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--warm-black);
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 1rem;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%236B6158' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px var(--terracotta-glow);
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(107, 97, 88, 0.5);
+    }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 0.5rem;
+      font-size: 1.05rem;
+      padding: 1rem;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      line-height: 1.6;
+    }
+
+    .form-note span {
+      margin: 0 0.4rem;
+      opacity: 0.4;
+    }
+
+    /* Success state */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .form-success.visible {
+      display: block;
+      animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .form-success-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background: var(--terracotta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .form-success-icon svg {
+      width: 28px;
+      height: 28px;
+      color: var(--cream-light);
+      stroke: currentColor;
+    }
+
+    .form-success h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .form-success p {
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      padding: 4rem 0 2rem;
+      background: var(--warm-dark);
+      color: var(--text-light);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .nav-monogram {
+      border-color: rgba(245, 240, 232, 0.3);
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9rem;
+      color: rgba(245, 240, 232, 0.5);
+      line-height: 1.6;
+      max-width: 30ch;
+    }
+
+    .footer-heading {
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.4);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.95rem;
+      color: rgba(245, 240, 232, 0.7);
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--terracotta-light);
+    }
+
+    .footer-contact p {
+      font-size: 0.95rem;
+      color: rgba(245, 240, 232, 0.7);
+      margin-bottom: 0.35rem;
+    }
+
+    .footer-bar {
+      border-top: 1px solid rgba(245, 240, 232, 0.1);
+      padding-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      font-size: 0.8rem;
+      color: rgba(245, 240, 232, 0.35);
+    }
+
+    .footer-bar a {
+      color: rgba(245, 240, 232, 0.35);
+    }
+
+    /* ============================================
+       WHATSAPP FLOATING BUTTON
+       ============================================ */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      width: 56px;
+      height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      box-shadow: 0 4px 16px rgba(37, 211, 102, 0.35);
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 6px 24px rgba(37, 211, 102, 0.45);
+    }
+
+    .whatsapp-float svg {
+      width: 28px;
+      height: 28px;
+      fill: white;
+    }
+
+    .whatsapp-float::before {
+      content: 'Fale conosco';
+      position: absolute;
+      right: calc(100% + 12px);
+      background: var(--warm-dark);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 0.5rem 0.85rem;
+      border-radius: var(--radius);
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(8px);
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .whatsapp-float:hover::before {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .whatsapp-pulse {
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      border: 2px solid #25D366;
+      animation: waPulse 2.5s ease-out infinite;
+    }
+
+    @keyframes waPulse {
+      0% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE — TABLET (768px)
+       ============================================ */
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+
+      .rights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .rights-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        justify-self: center;
+      }
+
+      .quotes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .solucao-content {
+        grid-template-columns: 1fr 1.5fr;
+        gap: 4rem;
+      }
+
+      .diferenciais {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-content {
+        grid-template-columns: 1.5fr 1fr 1fr;
+      }
+
+      .footer-bar {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .form-wrapper {
+        padding: 3rem;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+
+      .form-row .form-group {
+        margin-bottom: 0;
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE — DESKTOP (1200px)
+       ============================================ */
+    @media (min-width: 1200px) {
+      .rights-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .rights-card:last-child {
+        grid-column: auto;
+        max-width: 100%;
+        justify-self: auto;
+      }
+
+      .quotes-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .timeline {
+        flex-direction: row;
+        max-width: 100%;
+        gap: 0;
+      }
+
+      .timeline::before {
+        left: 0;
+        right: 0;
+        top: 24px;
+        bottom: auto;
+        width: auto;
+        height: 1px;
+      }
+
+      .timeline-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 1;
+        padding: 0 1.5rem;
+      }
+
+      .timeline-content h3 {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="Rodrigues de Paula — Início">
+        <span class="nav-monogram" aria-hidden="true">RP</span>
+        <span>Rodrigues de Paula</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#consciencia">Seus Direitos</a></li>
+        <li><a href="#solucao">O Escritório</a></li>
+        <li><a href="#processo">Como Funciona</a></li>
+        <li><a href="#faq">Dúvidas</a></li>
+        <li><a href="#agendamento" class="btn btn-primary nav-cta">Agendar Consulta</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO SECTION
+       ============================================ -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-ornament" aria-hidden="true"></div>
+        <h1 class="hero-headline" id="heroHeadline">
+          Você tem direitos que ninguém te contou.
+        </h1>
+        <p class="hero-sub">
+          Somos um escritório de advocacia dedicado exclusivamente a defender quem
+          vive com autismo, a comunidade LGBT e pessoas com doenças raras.
+          Sua luta é a nossa causa.
+        </p>
+        <div class="hero-cta">
+          <a href="#agendamento" class="btn btn-primary">Agendar Consulta Gratuita</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Conheça seus direitos</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Ornament -->
+  <div class="ornament"><div class="ornament-diamond"></div></div>
+
+  <!-- ============================================
+       CONSCIÊNCIA — RIGHTS SECTION
+       ============================================ -->
+  <section class="consciencia" id="consciencia">
+    <div class="container">
+      <div class="consciencia-header reveal">
+        <div class="section-label">Consciência</div>
+        <h2 class="section-title">Você sabia que tem direito a tudo isso?</h2>
+        <p class="section-subtitle">
+          A maioria das pessoas não conhece os direitos que a lei já garante.
+          Veja o que pode mudar na sua vida — ou na vida de quem você ama.
+        </p>
+      </div>
+
+      <div class="rights-grid">
+
+        <!-- Card: Autismo -->
+        <div class="rights-card reveal reveal-delay-1">
+          <svg class="rights-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 4C12.954 4 4 12.954 4 24s8.954 20 20 20 20-8.954 20-20S35.046 4 24 4z" opacity="0.2" fill="currentColor" stroke="none"/>
+            <path d="M16 24c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8"/>
+            <path d="M24 4v8M24 36v8M4 24h8M36 24h8"/>
+            <circle cx="24" cy="24" r="2" fill="currentColor" stroke="none"/>
+          </svg>
+          <div class="rights-card-label">Autismo · TEA</div>
+          <h3>Direitos de famílias atípicas</h3>
+          <ul class="rights-list">
+            <li>Plano de saúde é obrigado a cobrir terapia ABA, fonoaudiologia e terapia ocupacional</li>
+            <li>Pais podem reduzir jornada de trabalho em até 50% sem perder salário</li>
+            <li>Em separações, criança com TEA garante pensão especial para terapias</li>
+            <li>Saque do FGTS permitido para custear tratamento</li>
+            <li>CIPTEA garante atendimento prioritário em qualquer serviço</li>
+          </ul>
+          <a href="#agendamento" class="btn-ghost rights-link">Saiba se você tem direito </a>
+        </div>
+
+        <!-- Card: LGBT -->
+        <div class="rights-card reveal reveal-delay-2">
+          <svg class="rights-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="24" r="12" opacity="0.2" fill="currentColor" stroke="none"/>
+            <circle cx="18" cy="24" r="12"/>
+            <circle cx="30" cy="24" r="12"/>
+          </svg>
+          <div class="rights-card-label">Direitos LGBT</div>
+          <h3>Igualdade garantida por lei</h3>
+          <ul class="rights-list">
+            <li>Retificação de nome e gênero no cartório — sem cirurgia e sem laudo médico</li>
+            <li>LGBTfobia é crime com pena de 1 a 5 anos (STF, 2019)</li>
+            <li>Casamento civil, adoção e todos os direitos de família reconhecidos</li>
+            <li>Possibilidade de retornar ao nome de nascença por via judicial</li>
+          </ul>
+          <a href="#agendamento" class="btn-ghost rights-link">Saiba se você tem direito </a>
+        </div>
+
+        <!-- Card: Doenças Raras -->
+        <div class="rights-card reveal reveal-delay-3">
+          <svg class="rights-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M24 4l4 8h-8l4-8z" opacity="0.2" fill="currentColor" stroke="none"/>
+            <path d="M24 4v40"/>
+            <path d="M24 16c6 0 10 4 10 10s-4 10-10 10"/>
+            <path d="M24 16c-6 0-10 4-10 10s4 10 10 10"/>
+            <circle cx="24" cy="26" r="3" fill="currentColor" stroke="none"/>
+          </svg>
+          <div class="rights-card-label">Doenças Raras</div>
+          <h3>Proteção para quem mais precisa</h3>
+          <ul class="rights-list">
+            <li>O SUS é obrigado a fornecer medicamentos órfãos por via judicial</li>
+            <li>Doença rara incapacitante garante BPC/LOAS — 1 salário mínimo mensal</li>
+            <li>Isenção de impostos em medicamentos (LC 214/2025)</li>
+            <li>Aposentadoria por incapacidade permanente assegurada</li>
+          </ul>
+          <a href="#agendamento" class="btn-ghost rights-link">Saiba se você tem direito </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PROBLEMA — EMPATHY SECTION
+       ============================================ -->
+  <section class="problema" id="problema">
+    <div class="container">
+      <div class="section-label reveal">A realidade</div>
+      <h2 class="section-title reveal reveal-delay-1">A maioria das famílias perde benefícios por não saber que eles existem.</h2>
+      <p class="problema-subtitle reveal reveal-delay-2">
+        Essas histórias se repetem todos os dias. Alguma delas parece com a sua?
+      </p>
+
+      <div class="quotes-grid">
+        <div class="quote-block reveal">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="quote-text">
+            Pago terapia do meu filho do bolso há três anos sem saber que o plano era obrigado a cobrir tudo.
+          </p>
+        </div>
+        <div class="quote-block reveal reveal-delay-1">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="quote-text">
+            Fui demitido depois de contar minha identidade de gênero na empresa. Achei que não podia fazer nada.
+          </p>
+        </div>
+        <div class="quote-block reveal reveal-delay-2">
+          <span class="quote-mark" aria-hidden="true">"</span>
+          <p class="quote-text">
+            Meu filho tem doença rara. O SUS negou o remédio e eu não sabia que podia recorrer na justiça.
+          </p>
+        </div>
+      </div>
+
+      <div class="problema-cta reveal">
+        <a href="#agendamento" class="btn btn-light">Descubra seus direitos agora</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ornament -->
+  <div class="ornament"><div class="ornament-diamond"></div></div>
+
+  <!-- ============================================
+       SOLUÇÃO — THE FIRM
+       ============================================ -->
+  <section class="solucao" id="solucao">
+    <div class="container">
+      <div class="solucao-content">
+        <div class="solucao-monogram reveal">
+          <div class="monogram">
+            <span class="monogram-text" aria-hidden="true">RP</span>
+            <span class="monogram-sub">Advocacia</span>
+          </div>
+        </div>
+        <div class="solucao-text">
+          <div class="section-label reveal">O Escritório</div>
+          <h2 class="section-title reveal reveal-delay-1">Rodrigues de Paula — Advocacia Especializada em Atipicidade</h2>
+          <p class="solucao-desc reveal reveal-delay-2">
+            Não somos um escritório genérico. Cada caso que assumimos é pessoal.
+            Nossa equipe se dedica exclusivamente a defender pessoas em situação
+            de vulnerabilidade — porque conhecer seus direitos muda tudo.
+          </p>
+          <div class="diferenciais reveal reveal-delay-3">
+            <div class="diferencial">
+              <div class="diferencial-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              </div>
+              <div>
+                <h4>Especialização exclusiva</h4>
+                <p>TEA, direitos LGBT e doenças raras — é tudo o que fazemos</p>
+              </div>
+            </div>
+            <div class="diferencial">
+              <div class="diferencial-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z"/></svg>
+              </div>
+              <div>
+                <h4>Atendimento humanizado</h4>
+                <p>Acolhimento real — ouvimos antes de orientar</p>
+              </div>
+            </div>
+            <div class="diferencial">
+              <div class="diferencial-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+              </div>
+              <div>
+                <h4>Atuação em todo o Brasil</h4>
+                <p>Consultas 100% online, de qualquer lugar do país</p>
+              </div>
+            </div>
+            <div class="diferencial">
+              <div class="diferencial-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                <h4>Primeira consulta gratuita</h4>
+                <p>Avaliação inicial do seu caso, sem compromisso</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       COMO FUNCIONA — PROCESS
+       ============================================ -->
+  <section class="processo" id="processo">
+    <div class="container">
+      <div class="processo-header reveal">
+        <div class="section-label">Passo a passo</div>
+        <h2 class="section-title">Como funciona</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step reveal">
+          <div class="timeline-number">1</div>
+          <div class="timeline-content">
+            <h3>Agende sua consulta</h3>
+            <p>Preencha o formulário abaixo ou nos chame no WhatsApp. É rápido, online e sem burocracia.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal reveal-delay-1">
+          <div class="timeline-number">2</div>
+          <div class="timeline-content">
+            <h3>Conte seu caso</h3>
+            <p>Na consulta, ouvimos sua história com atenção e fazemos uma análise jurídica personalizada.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal reveal-delay-2">
+          <div class="timeline-number">3</div>
+          <div class="timeline-content">
+            <h3>Lutamos pelo seu direito</h3>
+            <p>Do primeiro passo à conquista do benefício — acompanhamos você em toda a jornada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       DEPOIMENTOS — TESTIMONIALS
+       ============================================ -->
+  <section class="depoimentos" id="depoimentos">
+    <div class="container">
+      <div class="depoimentos-header reveal">
+        <div class="section-label">Depoimentos</div>
+        <h2 class="section-title">Quem confiou no nosso trabalho</h2>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="testimonial-stars" aria-label="5 de 5 estrelas">
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Consegui a cobertura do plano para todas as terapias do meu filho.
+            Eu não sabia que era meu direito. Mudou completamente a nossa vida."
+          </p>
+          <p class="testimonial-author">Maria S. — Mãe de criança com TEA, São Paulo</p>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="testimonial-stars" aria-label="5 de 5 estrelas">
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Retifiquei meu nome e gênero no cartório sem precisar de laudo.
+            Me trataram com respeito do começo ao fim. Sou grato para sempre."
+          </p>
+          <p class="testimonial-author">Lucas R. — Homem trans, Belo Horizonte</p>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="testimonial-stars" aria-label="5 de 5 estrelas">
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+            <svg viewBox="0 0 20 20"><polygon points="10,1 12.5,7 19,7.5 14,12 15.5,19 10,15.5 4.5,19 6,12 1,7.5 7.5,7"/></svg>
+          </div>
+          <p class="testimonial-text">
+            "Minha filha tem doença rara e o SUS negou o medicamento.
+            Eles entraram na justiça e em semanas conseguimos tudo. Profissionais incríveis."
+          </p>
+          <p class="testimonial-author">Carlos M. — Pai de paciente com doença rara, Recife</p>
+        </div>
+      </div>
+
+      <p class="testimonials-note">Depoimentos reais — nomes preservados para privacidade dos clientes.</p>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FAQ SECTION
+       ============================================ -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq-header reveal">
+        <div class="section-label">Perguntas frequentes</div>
+        <h2 class="section-title">Tire suas dúvidas</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Preciso ir até o escritório pessoalmente?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Não. Todo o atendimento pode ser feito de forma 100% online — por videochamada e WhatsApp.
+              Atendemos clientes de todo o Brasil sem que você precise sair de casa.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Meu filho tem laudo, mas ainda não tem CIPTEA. Já posso buscar meus direitos?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Sim! O laudo médico de TEA já é suficiente para iniciar diversas ações judiciais
+              e administrativas. Podemos orientar sobre a emissão do CIPTEA e, paralelamente,
+              já garantir seus direitos.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Quanto custa a consulta?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              A primeira consulta para avaliação do seu caso é gratuita. Nela, analisamos
+              sua situação e indicamos os caminhos jurídicos possíveis. Valores de honorários
+              são discutidos com total transparência após essa primeira conversa.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            É possível reduzir minha jornada mesmo sendo empregado CLT?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Sim. A lei garante que pais e mães de crianças com deficiência, incluindo TEA,
+              podem solicitar redução de jornada de até 50% sem redução salarial.
+              Atuamos tanto na negociação com o empregador quanto judicialmente.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            O que é judicialização da saúde e quando vale a pena?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              É quando recorremos à Justiça para obrigar o SUS ou o plano de saúde a fornecer
+              um tratamento ou medicamento que foi negado. Vale a pena sempre que há um
+              direito sendo descumprido — e a taxa de sucesso nesses casos é alta.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Posso retificar meu nome no cartório sem laudo médico?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Sim. Desde a decisão do STF em 2018, a retificação de nome e gênero pode
+              ser feita diretamente no cartório de registro civil, sem necessidade de
+              cirurgia, laudo médico ou decisão judicial. É um processo administrativo.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Como funciona o BPC/LOAS para doenças raras?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              O BPC (Benefício de Prestação Continuada) garante 1 salário mínimo mensal
+              para pessoas com deficiência ou doença incapacitante cuja renda familiar
+              per capita seja de até 1/4 do salário mínimo. Atuamos em todo o processo
+              administrativo e judicial.
+            </div>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-question" aria-expanded="false">
+            Vocês atuam com ações contra empresas por LGBTfobia?
+          </button>
+          <div class="faq-answer" role="region">
+            <div class="faq-answer-inner">
+              Sim. Desde 2019, o STF equiparou LGBTfobia ao crime de racismo, com pena
+              de 1 a 5 anos. Atuamos tanto na esfera criminal quanto na esfera cível,
+              buscando indenizações por danos morais e materiais.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA FINAL — AGENDAMENTO
+       ============================================ -->
+  <section class="agendamento" id="agendamento">
+    <div class="container">
+      <div class="agendamento-content">
+        <div class="section-label reveal" style="justify-content:center">Agendamento</div>
+        <h2 class="section-title reveal reveal-delay-1">Seu direito existe. Falta alguém para lutar por ele.</h2>
+        <p class="agendamento-subtitle reveal reveal-delay-2">
+          Preencha o formulário e nossa equipe entrará em contato pelo WhatsApp
+          para agendar sua consulta gratuita.
+        </p>
+
+        <div class="form-wrapper reveal reveal-delay-3">
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome" class="form-label">Nome completo</label>
+                <input type="text" id="nome" class="form-input" placeholder="Seu nome" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="whatsapp" class="form-label">WhatsApp</label>
+                <input type="tel" id="whatsapp" class="form-input" placeholder="(00) 00000-0000" required autocomplete="tel">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="area" class="form-label">Área de interesse</label>
+              <select id="area" class="form-select" required>
+                <option value="" disabled selected>Selecione uma área</option>
+                <option value="autismo">Autismo / TEA</option>
+                <option value="lgbt">Direitos LGBT</option>
+                <option value="doencas-raras">Doenças Raras</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem" class="form-label">Descreva brevemente sua situação</label>
+              <textarea id="mensagem" class="form-textarea" placeholder="Conte um pouco sobre o que está vivendo para que possamos entender melhor como ajudar..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Quero agendar minha consulta</button>
+            <p class="form-note">
+              Consulta inicial gratuita <span>·</span> Atendimento online <span>·</span> Sigilo garantido
+            </p>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <div class="form-success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+            </div>
+            <h3>Recebemos sua mensagem!</h3>
+            <p>
+              Nossa equipe entrará em contato pelo WhatsApp nas próximas horas
+              para agendar sua consulta. Fique atento ao seu celular.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="nav-monogram" aria-hidden="true">RP</div>
+          <p class="footer-brand-name">Rodrigues de Paula</p>
+          <p>Advocacia especializada em direitos de grupos atípicos. Acolhimento, especialização e resultado.</p>
+        </div>
+        <div class="footer-nav">
+          <p class="footer-heading">Navegação</p>
+          <ul class="footer-links">
+            <li><a href="#consciencia">Seus Direitos</a></li>
+            <li><a href="#solucao">O Escritório</a></li>
+            <li><a href="#processo">Como Funciona</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+            <li><a href="#faq">Perguntas Frequentes</a></li>
+            <li><a href="#agendamento">Agendar Consulta</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <p class="footer-heading">Contato</p>
+          <p>contato@rodriguesdepaula.adv.br</p>
+          <p>(11) 99999-9999</p>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.5;">OAB/SP 000.000</p>
+        </div>
+      </div>
+      <div class="footer-bar">
+        <p>&copy; 2025 Rodrigues de Paula Advocacia — Todos os direitos reservados.</p>
+        <p>Este site tem finalidade informativa e não substitui consulta jurídica individualizada.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       WHATSAPP FLOATING BUTTON
+       ============================================ -->
+  <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Conversar pelo WhatsApp">
+    <div class="whatsapp-pulse" aria-hidden="true"></div>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <!-- ============================================
+       JAVASCRIPT
+       ============================================ -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ========================================
+      // HERO STAGGER ANIMATION
+      // ========================================
+      function initHeroAnimation() {
+        var headline = document.getElementById('heroHeadline');
+        if (!headline) return;
+
+        var text = headline.textContent.trim();
+        var words = text.split(/\s+/);
+        headline.innerHTML = '';
+
+        // Highlight keywords
+        var highlightWords = ['direitos', 'ninguém'];
+
+        words.forEach(function(word, i) {
+          var span = document.createElement('span');
+          span.className = 'hero-word';
+          span.textContent = word;
+          span.style.animationDelay = (0.5 + i * 0.1) + 's';
+
+          if (highlightWords.some(function(hw) {
+            return word.toLowerCase().indexOf(hw) !== -1;
+          })) {
+            span.classList.add('hero-word-highlight');
+          }
+
+          headline.appendChild(span);
+
+          // Add space between words (not after last)
+          if (i < words.length - 1) {
+            headline.appendChild(document.createTextNode(' '));
+          }
+        });
+      }
+
+      // ========================================
+      // SCROLL REVEAL (Intersection Observer)
+      // ========================================
+      function initScrollReveal() {
+        var reveals = document.querySelectorAll('.reveal');
+        if (!reveals.length) return;
+
+        // Check for reduced motion preference
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          reveals.forEach(function(el) {
+            el.classList.add('revealed');
+          });
+          return;
+        }
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        reveals.forEach(function(el) {
+          observer.observe(el);
+        });
+      }
+
+      // ========================================
+      // NAVIGATION SCROLL EFFECT
+      // ========================================
+      function initNavScroll() {
+        var nav = document.getElementById('nav');
+        if (!nav) return;
+
+        var scrolled = false;
+
+        function checkScroll() {
+          var shouldBeScrolled = window.scrollY > 60;
+          if (shouldBeScrolled !== scrolled) {
+            scrolled = shouldBeScrolled;
+            nav.classList.toggle('scrolled', scrolled);
+          }
+        }
+
+        window.addEventListener('scroll', checkScroll, { passive: true });
+        checkScroll();
+      }
+
+      // ========================================
+      // FAQ ACCORDION
+      // ========================================
+      function initFAQ() {
+        var items = document.querySelectorAll('.faq-item');
+
+        items.forEach(function(item) {
+          var question = item.querySelector('.faq-question');
+          var answer = item.querySelector('.faq-answer');
+
+          question.addEventListener('click', function() {
+            var isActive = item.classList.contains('active');
+
+            // Close all items
+            items.forEach(function(other) {
+              other.classList.remove('active');
+              var otherAnswer = other.querySelector('.faq-answer');
+              var otherQuestion = other.querySelector('.faq-question');
+              otherAnswer.style.maxHeight = null;
+              otherQuestion.setAttribute('aria-expanded', 'false');
+            });
+
+            // Open clicked item (if it wasn't already open)
+            if (!isActive) {
+              item.classList.add('active');
+              answer.style.maxHeight = answer.scrollHeight + 'px';
+              question.setAttribute('aria-expanded', 'true');
+            }
+          });
+        });
+      }
+
+      // ========================================
+      // FORM HANDLING
+      // ========================================
+      function initForm() {
+        var form = document.getElementById('contactForm');
+        var success = document.getElementById('formSuccess');
+        if (!form || !success) return;
+
+        // Phone mask
+        var whatsappInput = document.getElementById('whatsapp');
+        if (whatsappInput) {
+          whatsappInput.addEventListener('input', function(e) {
+            var value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 7) {
+              value = '(' + value.slice(0, 2) + ') ' + value.slice(2, 7) + '-' + value.slice(7);
+            } else if (value.length > 2) {
+              value = '(' + value.slice(0, 2) + ') ' + value.slice(2);
+            } else if (value.length > 0) {
+              value = '(' + value;
+            }
+
+            e.target.value = value;
+          });
+        }
+
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          // Basic validation
+          var nome = document.getElementById('nome');
+          var whatsapp = document.getElementById('whatsapp');
+          var area = document.getElementById('area');
+
+          var valid = true;
+
+          [nome, whatsapp, area].forEach(function(field) {
+            if (!field.value.trim()) {
+              field.style.borderColor = '#c0392b';
+              valid = false;
+
+              field.addEventListener('input', function handler() {
+                field.style.borderColor = '';
+                field.removeEventListener('input', handler);
+              });
+            }
+          });
+
+          if (!valid) return;
+
+          // Show success
+          form.style.display = 'none';
+          success.classList.add('visible');
+
+          // Scroll success into view
+          success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+
+      // ========================================
+      // SMOOTH SCROLL FOR ANCHOR LINKS
+      // ========================================
+      function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+          link.addEventListener('click', function(e) {
+            var href = this.getAttribute('href');
+            if (href === '#') return;
+
+            var target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+
+            var navHeight = document.getElementById('nav').offsetHeight;
+            var targetPosition = target.getBoundingClientRect().top + window.scrollY - navHeight - 20;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          });
+        });
+      }
+
+      // ========================================
+      // INITIALIZE EVERYTHING
+      // ========================================
+      document.addEventListener('DOMContentLoaded', function() {
+        initHeroAnimation();
+        initScrollReveal();
+        initNavScroll();
+        initFAQ();
+        initForm();
+        initSmoothScroll();
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
