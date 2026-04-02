@@ -260,17 +260,11 @@
       color: var(--warm-black);
     }
 
-    .nav-monogram {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 2.5rem;
+    .nav-logo-img {
       height: 2.5rem;
-      border: 1.5px solid var(--warm-black);
-      font-family: var(--font-display);
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
+      width: auto;
       flex-shrink: 0;
+      border-radius: var(--radius);
     }
 
     .nav-links {
@@ -1224,9 +1218,9 @@
       margin-bottom: 3rem;
     }
 
-    .footer-brand .nav-monogram {
-      border-color: rgba(245, 240, 232, 0.3);
-      color: var(--text-light);
+    .footer-logo-img {
+      height: 3.5rem;
+      width: auto;
       margin-bottom: 1rem;
     }
 
@@ -1480,8 +1474,7 @@
   <nav class="nav" id="nav" role="navigation" aria-label="Navegação principal">
     <div class="container">
       <a href="#" class="nav-logo" aria-label="Rodrigues de Paula — Início">
-        <span class="nav-monogram" aria-hidden="true">RP</span>
-        <span>Rodrigues de Paula</span>
+        <img src="logo-rdp.jpeg" alt="Rodrigues de Paula — Advocacia & Consultoria Jurídica" class="nav-logo-img">
       </a>
       <ul class="nav-links">
         <li><a href="#consciencia">Seus Direitos</a></li>
@@ -1979,7 +1972,7 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-brand">
-          <div class="nav-monogram" aria-hidden="true">RP</div>
+          <img src="logo-rdp-light.png" alt="Rodrigues de Paula" class="footer-logo-img">
           <p class="footer-brand-name">Rodrigues de Paula</p>
           <p>Advocacia especializada em direitos de grupos atípicos. Acolhimento, especialização e resultado.</p>
         </div>
